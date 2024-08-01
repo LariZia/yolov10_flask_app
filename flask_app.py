@@ -3,7 +3,7 @@ from flask import Flask
 port_no = 5000
 
 from ultralytics import YOLOv10
-modelm = YOLOv10('/content/weights/yolov10b.pt')
+modelm = YOLOv10('yolov10b.pt')
 
 from flask import Flask, request, jsonify
 
