@@ -1,17 +1,13 @@
-from flask import Flask
 #from pyngrok import ngrok
-port_no = 5000
-
-from ultralytics import YOLOv10
-modelm = YOLOv10('yolov10b.pt')
-
 from flask import Flask, request, jsonify
-
-
 from PIL import Image
 import io
 from ultralytics import YOLOv10
 import time
+
+
+# port_no = 5000
+modelm = YOLOv10('yolov10b.pt')
 
 app = Flask(__name__)
 
