@@ -4,6 +4,7 @@ from PIL import Image
 import io
 from ultralytics import YOLOv10
 import time
+import cv2
 
 
 # port_no = 5000
