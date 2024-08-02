@@ -1,5 +1,5 @@
 #from pyngrok import ngrok
-from flask import Flask, request, jsonify
+# from flask import Flask, request, jsonify
 from PIL import Image
 import io
 from ultralytics import YOLOv10
