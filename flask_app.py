@@ -5,7 +5,7 @@ import io
 import time
 # import cv2
 
-import supervision as sv
+# import supervision as sv
 from ultralytics import YOLOv10
 
 # port_no = 5000
