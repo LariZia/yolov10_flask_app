@@ -112,3 +112,6 @@ def predict():
 # print(f"To acces the Gloable link please click {public_url}")
 
 # app.run(port=port_no)
+
+if __name__ == 'main':
+    app.run(host= '0.0.0.0', port = 8100, debug = True)
