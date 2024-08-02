@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from PIL import Image
 import io
 import time
-import cv2
+# import cv2
 
 import supervision as sv
 from ultralytics import YOLOv10
