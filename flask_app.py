@@ -2,10 +2,11 @@
 from flask import Flask, request, jsonify
 from PIL import Image
 import io
-from ultralytics import YOLOv10
 import time
 import cv2
 
+import supervision as sv
+from ultralytics import YOLOv10
 
 # port_no = 5000
 modelm = YOLOv10('yolov10b.pt')
