@@ -17,3 +17,4 @@ flask==3.0.2
 git+https://github.com/THU-MIG/yolov10.git
 gunicorn
 opencv-python-headless
+torchaudio
