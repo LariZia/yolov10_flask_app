@@ -1,4 +1,6 @@
 [phases.setup]
-nixPkgs = ["...", "ffmpeg"]
-nixLibs = ["...", "gcc-unwrapped"]
 aptPkgs = ["...", "wget", "libgl1", "libglib2.0-0"]
+
+[build]
+builder = "DOCKERFILE"
+dockekfilePath = "/Dockerfile"
