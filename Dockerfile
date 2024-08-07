@@ -20,6 +20,8 @@ RUN set -eux; \
 		ca-certificates \
 		netbase \
 		tzdata \
+         	libgl1-mesa-glx \
+       		libglib2.0-0 \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -49,8 +51,6 @@ RUN set -eux; \
 		make \
 		tk-dev \
 		uuid-dev \
-  		git \
-    		libgl1-mesa-glx \
 		wget \
 		xz-utils \
 		zlib1g-dev \
