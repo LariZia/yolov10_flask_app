@@ -1,17 +1,9 @@
-#
-# NOTE: THIS DOCKERFILE IS GENERATED VIA "apply-templates.sh"
-#
-# PLEASE DO NOT EDIT IT DIRECTLY.
-#
-
 FROM debian:bookworm-slim
 
 # ensure local python is preferred over distribution python
 ENV PATH /usr/local/bin:$PATH
 
 # cannot remove LANG even though https://bugs.python.org/issue19846 is fixed
-# last attempted removal of LANG broke many users:
-# https://github.com/docker-library/python/pull/570
 ENV LANG C.UTF-8
 
 # runtime dependencies
@@ -87,8 +79,6 @@ RUN set -eux; \
 		"LDFLAGS=${LDFLAGS:-}" \
 		"PROFILE_TASK=${PROFILE_TASK:-}" \
 	; \
-# https://github.com/docker-library/python/issues/784
-# prevent accidental usage of a system installed libpython of the same version
 	rm python; \
 	make -j "$nproc" \
 		"EXTRA_CFLAGS=${EXTRA_CFLAGS:-}" \
@@ -169,6 +159,16 @@ RUN set -eux; \
 	\
 	pip --version
 
-CMD ["python3",  "flask_app.py"]
+# Copy application files
+COPY flask_app.py /app/flask_app.py
+COPY requirements.txt /app/requirements.txt
+WORKDIR /app
 
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose port
 EXPOSE 3000
+
+# Run the application
+CMD ["gunicorn", "--bind", "0.0.0.0:3000", "flask_app:app"]
