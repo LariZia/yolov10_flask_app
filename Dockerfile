@@ -49,6 +49,7 @@ RUN set -eux; \
 		make \
 		tk-dev \
 		uuid-dev \
+  		git \
 		wget \
 		xz-utils \
 		zlib1g-dev \
