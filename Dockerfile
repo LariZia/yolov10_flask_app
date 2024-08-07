@@ -162,6 +162,7 @@ RUN set -eux; \
 # Copy application files
 COPY flask_app.py /app/flask_app.py
 COPY requirements.txt /app/requirements.txt
+COPY yolov10b.pt /app/yolov10b.pt
 WORKDIR /app
 
 # Install Python dependencies
