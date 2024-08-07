@@ -50,6 +50,7 @@ RUN set -eux; \
 		tk-dev \
 		uuid-dev \
   		git \
+    		libgl1-mesa-glx \
 		wget \
 		xz-utils \
 		zlib1g-dev \
