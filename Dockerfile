@@ -169,4 +169,6 @@ RUN set -eux; \
 	\
 	pip --version
 
-CMD ["python3"]
+CMD ["python3",  "flask_app.py"]
+
+EXPOSE 3000
