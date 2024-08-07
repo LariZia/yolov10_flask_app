@@ -2,17 +2,16 @@
 # NOTE: THIS DOCKERFILE IS GENERATED VIA "apply-templates.sh"
 #
 # PLEASE DO NOT EDIT IT DIRECTLY.
-#
 
-FROM debian:bookworm-slim
+FROM debian:bullseye-slim
 
 # ensure local python is preferred over distribution python
-ENV PATH = /usr/local/bin:$PATH
+ENV PATH /usr/local/bin:$PATH
 
 # cannot remove LANG even though https://bugs.python.org/issue19846 is fixed
 # last attempted removal of LANG broke many users:
 # https://github.com/docker-library/python/pull/570
-ENV LANG = C.UTF-8
+ENV LANG C.UTF-8
 
 # runtime dependencies
 RUN set -eux; \
@@ -24,8 +23,8 @@ RUN set -eux; \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
-ENV GPG_KEY = A035C8C19219BA821ECEA86B64E628F8D684696D
-ENV PYTHON_VERSION = 3.10.14
+ENV GPG_KEY A035C8C19219BA821ECEA86B64E628F8D684696D
+ENV PYTHON_VERSION 3.10.14
 
 RUN set -eux; \
 	\
@@ -135,12 +134,12 @@ RUN set -eux; \
 	done
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
-ENV PYTHON_PIP_VERSION = 23.0.1
+ENV PYTHON_PIP_VERSION 23.0.1
 # https://github.com/docker-library/python/issues/365
-ENV PYTHON_SETUPTOOLS_VERSION = 65.5.1
+ENV PYTHON_SETUPTOOLS_VERSION 65.5.1
 # https://github.com/pypa/get-pip
-ENV PYTHON_GET_PIP_URL = https://github.com/pypa/get-pip/raw/66d8a0f637083e2c3ddffc0cb1e65ce126afb856/public/get-pip.py
-ENV PYTHON_GET_PIP_SHA256 = 6fb7b781206356f45ad79efbb19322caa6c2a5ad39092d0d44d0fec94117e118
+ENV PYTHON_GET_PIP_URL https://github.com/pypa/get-pip/raw/66d8a0f637083e2c3ddffc0cb1e65ce126afb856/public/get-pip.py
+ENV PYTHON_GET_PIP_SHA256 6fb7b781206356f45ad79efbb19322caa6c2a5ad39092d0d44d0fec94117e118
 
 RUN set -eux; \
 	\
@@ -182,4 +181,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 3000
 
 # Run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:3000", "flask_app:app"]
+CMD ["python3","gunicorn", "--bind", "0.0.0.0:3000", "flask_app:app"]
