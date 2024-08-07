@@ -182,4 +182,4 @@ RUN pip install -r requirements.txt
 EXPOSE 3000
 
 # Run the application
-CMD ["python3","gunicorn", "--bind", "0.0.0.0:3000", "flask_app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:3000", "flask_app:app"]
